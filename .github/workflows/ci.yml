@@ -37,16 +37,14 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            export PATH=$PATH:/root/.bun/bin:/root/.nvm/versions/node/v22.19.0/bin
-
             # go to app directory and pull latest changes
-            cd /var/www/app/m3tering-arweave-gateway-interface
+            cd /var/www/m3tering-arweave-gateway-interface
 
             # pull latest changes
             git pull
 
             # install dependencies
-            bun install
+            npm install
 
             # restart process
-            pm2 restart m3ter-subgraph
+            pm2 restart m3tering-subgraph
