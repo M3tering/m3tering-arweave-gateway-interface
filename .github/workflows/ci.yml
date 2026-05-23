@@ -37,14 +37,25 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # go to app directory and pull latest changes
-            cd /var/www/m3tering-arweave-gateway-interface
+              export NVM_DIR="$HOME/.nvm"
+              [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-            # pull latest changes
-            git pull
+              whoami
 
-            # install dependencies
-            npm install
+              echo "Node:"
+              which node
+              node -v
 
-            # restart process
-            pm2 restart m3tering-subgraph
+              echo "NPM:"
+              which npm
+              npm -v
+
+              echo "PM2:"
+              which pm2
+              pm2 -v
+
+              cd /var/www/m3tering-arweave-gateway-interface
+
+              git pull
+              npm install
+              pm2 restart m3tering-subgraph
