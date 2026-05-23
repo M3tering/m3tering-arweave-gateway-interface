@@ -37,25 +37,25 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-              export NVM_DIR="$HOME/.nvm"
-              [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-              whoami
+            whoami
 
-              echo "Node:"
-              which node
-              node -v
+            echo "Node:"
+            which node
+            node -v
 
-              echo "NPM:"
-              which npm
-              npm -v
+            echo "NPM:"
+            which npm
+            npm -v
 
-              echo "PM2:"
-              which pm2
-              pm2 -v
+            echo "PM2:"
+            which pm2
+            pm2 -v
 
-              cd /var/www/m3tering-arweave-gateway-interface
+            cd /var/www/m3tering-arweave-gateway-interface
 
-              git pull
-              npm install
-              pm2 restart m3tering-subgraph
+            git pull
+            npm install
+            pm2 restart m3tering-subgraph
